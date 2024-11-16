@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details - Library Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+<style>
+     body{
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+        
+        }
+        
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:  #758597;">
+        <a class="navbar-brand text-white" href="index.html">Library System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="catalog.html">Catalog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="admin.html">Admin Panel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="register.html">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    
+    <div class="container mt-5">
+        <h2>The Silent Patient</h2>
+        <div class="row">
+            <!-- Book Image -->
+            <div class="col-md-4">
+                <img src="images/p9.jpg" class="img-fluid" alt="Book Title 1">
+            </div>
+            <!-- Book Details -->
+            <div class="col-md-8">
+                <h4>Author: :Alex Michaelides</h4>
+                <p><strong>Genre:</strong> Psychological Thriller / Mystery</p>
+                <p><strong>Publication Date:</strong> 2019</p>
+                <p><strong>Availability:</strong> Available</p>
+                <p><strong>Summary:</strong> ""The Silent Patient" follows Alicia Berenson, a famous painter who inexplicably shoots her husband and then stops speaking entirely. A psychotherapist, Theo Faber, becomes obsessed with uncovering the truth behind her silence, leading him down a dark path filled with shocking revelations and twists..</p>
+                
+                <h5>Reviews</h5>
+                <div class="review">
+                    <p><strong>User 1:</strong> It's amazing, I've read it over and over again.</p>
+                    <p><strong>User 2:</strong> I love this book and I recommend you to read it </p>
+                </div>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="review">Leave a Review</label>
+                        <textarea class="form-control" id="review" rows="3" placeholder="Write your review here"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                </form>
+                
+                <a href="catalog.html" class="btn btn-secondary mt-3">Back to Catalog</a>
+                <a href="borrow book.html" class="btn btn-primary mt-3">Borrow Book</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <p>&copy; 2024 Library Management System. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</html>

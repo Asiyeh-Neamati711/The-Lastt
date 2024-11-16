@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Catalog - Library Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css"> 
+    
+</head>
+<body>
+    
+        
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #758597;">
+        <a class="navbar-brand text-white" href="index.html">Library Management System</a>
+        <div class="notification-container">
+          
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    
+                    <a class="nav-link text-white" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="catalog.html">Catalog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="admin.html">Admin Panel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="register.html">Register</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="search.html">Search </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+      }
+
+      :root {
+        --primary-color: #c0c0c0;
+        --secondary-color: #ffffff;
+      }
+
+      body {
+        font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+        text-decoration: underline;
+        background: rgba(0, 0, 0, 0.2) url(images/photo_2024-09-10_13-12-49.jpg) center/cover no-repeat fixed;
+        background-image: url(images/p5.jpg);
+        
+       
+      }
+      a {
+        color: var(--secondary-color);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 100vh;
+        padding: 1rem;
+      }
+
+      .login-wrapper {
+        position: relative;
+        padding: 4rem 1.5rem 1rem 1.5rem;
+        border: 2px solid var(--primary-color);
+        border-radius: 15px;
+        backdrop-filter: blur(25px);
+        box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+        color: var(--secondary-color);
+      }
+
+      .login-header {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 1.5rem;
+        transform: translateX(-50%);
+        border-radius: 0 0 20px 20px;
+        background-color: var(--primary-color);
+        color: black;
+        font-size: clamp(1rem, 6vw, 3rem);
+      }
+
+      .login-header::before,
+      .login-header::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        background: transparent;
+      }
+
+      .login-header::before {
+        left: -30px;
+        border-top-right-radius: 50%;
+        box-shadow: 15px 0 0 0 var(--primary-color);
+      }
+
+      .login-header::after {
+        right: -30px;
+        border-top-left-radius: 50%;
+        box-shadow: -15px 0 0 0 var(--primary-color);
+      }
+
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        margin-top: clamp(0.5rem, 3vw, 3rem);
+        font-size: clamp(0.8rem, 3vw, 1rem);
+        gap: 1rem;
+      }
+
+      .input-wrapper {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 0.5rem;
+        border: 2px solid var(--primary-color);
+        border-radius: 30px;
+        outline: none;
+        background: transparent;
+        color: var(--secondary-color);
+      }
+
+      .label {
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%);
+        transition: 0.2s;
+      }
+
+      .input-field:focus ~ .label,
+      .input-field:valid ~ .label {
+        top: 0%;
+        left: 0%;
+        padding: 0 10px;
+        border-radius: 30px;
+        background-color: var(--primary-color);
+        color: black;
+      }
+
+      .icon {
+        position: absolute;
+        top: 18px;
+        right: 25px;
+      }
+
+      .login-check {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .forgot {
+        font-size: clamp(0.7rem, 2vw, 0.8rem);
+      }
+
+      .input-login {
+        width: 100%;
+        padding: 0.6rem;
+        border: none;
+        border-radius: 30px;
+        background: #ececec;
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .input-login:hover {
+        background: var(--secondary-color);
+      }
+
+      .register {
+        text-align: center;
+      }
+
+      .register a {
+        font-weight: 500;
+      }
+    </style>
+  
+  <body>
+    <div class="wrapper">
+      <div class="login-wrapper">
+        <div class="login-header">Login</div>
+        <div class="login-form">
+          <div class="input-wrapper">
+            <input type="text" id="user1" class="input-field" required />
+            <label for="user1" class="label">User Name</label>
+            <i class="bx bx-user icon"></i>
+          </div>
+          <div class="input-wrapper">
+            <input type="email" id="user2" class="input-field" required />
+            <label for="user2" class="label">Email</label>
+            <i class="bx bx-user icon"></i>
+          </div>
+          <div class="input-wrapper">
+            <input type="password" id="user3" class="input-field" required />
+            <label for="user3" class="label">Password</label>
+            <i class="bx bx-user icon"></i>
+          </div>
+          <div class="login-check">
+            <div class="remember">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Remember Me</label>
+            </div>
+            <div class="forgot">
+              <a href="#">Forgot Password</a>
+            </div>
+          </div>
+          <div class="input-wrapper">
+            <input type="submit" class="input-login" value="Login" />
+          </div>
+          <div class="register">
+            <span>Don't have an account? <a href="#">Register</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="bg-light text-center text-lg-start mt-5" >
+
+      <p >&copy; 2024 Library Management System. All rights reserved.</p>
+</footer>
+
+  </body>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>

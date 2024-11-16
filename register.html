@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System - Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* General body styles */
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+        text-decoration: underline;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background-image: url(images/s2.jpg);
+        
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color:#758597;
+        }
+
+        .navbar a {
+            color: gray;
+        }
+
+        .navbar a:hover {
+            color: #f4f4f4;
+        }
+
+        /* Registration Form Container */
+        .registration-container {
+            width: 400px;
+            margin: 100px auto;
+            background-color: darkgrey;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form Heading */
+        .registration-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+
+        /* Form Group */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        /* Labels */
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        /* Input Fields */
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #34495e;
+        }
+
+        /* Textarea */
+        .form-group textarea {
+            resize: none;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: lavender;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 480px) {
+            .registration-container {
+                width: 90%;
+            }
+
+            .submit-btn {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>    
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #758597;">
+        <a class="navbar-brand text-white" href="index.html">Library Management System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="catalog.html">Catalog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="admin.html">Admin Panel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="register.html">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="search.html">Search </a>
+                </li>
+            </ul>
+            <div class="notification-container ml-auto">
+                <button class="notification-button">
+                    <span class="icon">🔔</span>
+                    <span class="badge">3</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Registration Form Container -->
+    <div class="registration-container">
+        <form action="#" method="POST" class="registration-form">
+            <h2>Library Registration</h2>
+
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Create a password">
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="3" placeholder="Enter your address"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Register</button>
+            </div>
+        </form>
+    </div>
+ 
+    <footer class="bg-light text-center text-lg-start mt-5">
+
+        <p>&copy; 2024 Library Management System. All rights reserved.</p>
+</footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

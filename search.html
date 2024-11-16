@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Catalog - Library Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <style>
+        /* General body styles */
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-image: url(images/p2.jpg);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+            text-decoration: underline;
+        }
+        /* Container styling */
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            margin-top: 20px;
+        }
+
+        /* Heading style */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        /* Form input styling */
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            font-size: 1rem;
+            color: #34495e;
+        }
+
+        /* Form label style */
+        label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        /* Buttons styling */
+        .btn-success, .btn-warning {
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+        /* Table styling */
+        .table {
+            margin-top: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .table thead th {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+        }
+
+        .table tbody td {
+            padding: 10px;
+        }
+
+        /* Modal styling */
+        .modal-content {
+            padding: 20px;
+        }
+
+        .modal-header {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .btn-success, .btn-warning {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+        
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #758597;">
+        <a class="navbar-brand text-white" href="index.html">Library Management System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="catalog.html">Catalog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="admin.html">Admin Panel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="register.html">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="search.html">Search </a>
+                </li>
+            </ul>
+            <div class="notification-container ml-auto">
+                <button class="notification-button">
+                    <span class="icon">🔔</span>
+                    <span class="badge">3</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Book Form and Table -->
+    <div class="container mb-5">
+        <h1 class="text-center mb-5">Search Your Book</h1>
+        <form action="" id="bookForm">
+            <div class="form-group mb-3">
+                <label for="bookTitle">Book Title</label>
+                <input
+                    type="text"
+                    id="bookTitle"
+                    class="form-control"
+                    placeholder="Enter Book Title"
+                    required
+                />
+            </div>
+            <div class="form-group mb-3">
+                <label for="author">Author</label>
+                <input
+                    type="text"
+                    id="author"
+                    class="form-control"
+                    placeholder="Enter Author Name"
+                    required
+                />
+            </div>
+            <div class="form-group mb-3">
+                <label for="genre">Genre</label>
+                <input
+                    type="text"
+                    id="genre"
+                    class="form-control"
+                    placeholder="Enter Book Genre"
+                    required
+                />
+            </div>
+            <div class="form-group mb-3">
+                <label for="year">Year</label>
+                <input
+                    type="text"
+                    id="year"
+                    class="form-control"
+                    placeholder="Enter Publish Year"
+                    required
+                />
+            </div>
+
+            <button class="btn btn-success" type="submit" id="addBtn">Add Book</button>
+            <button class="btn btn-warning ml-3" type="button" id="clearBtn">Clear All</button>
+        </form>
+
+        <!-- Table for displaying books -->
+        <table class="table mt-4" id="bookTable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Year</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Modal for editing book details -->
+    <div class="modal fade" id="editModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Book</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <div class="form-group mb-3">
+                            <!-- Modal content for editing book -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+    <!-- JavaScript Code for Handling Book Management -->
+    <script>
+    
+      // Select the necessary elements
+      const bookForm = document.getElementById("bookForm");
+      const bookTableBody = document.querySelector("#bookTable tbody");
+      const clearBtn = document.getElementById("clearBtn");
+
+      // Event listener for form submission
+      bookForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form from submitting
+
+        // Get input values
+        const bookTitle = document.getElementById("bookTitle").value;
+        const author = document.getElementById("author").value;
+        const genre = document.getElementById("genre").value;
+        const year = document.getElementById("year").value;
+
+        // Create a new row
+        const newRow = document.createElement("tr");
+
+        newRow.innerHTML = `
+          <td>${bookTitle}</td>
+          <td>${author}</td>
+          <td>${genre}</td>
+          <td>${year}</td>
+          <td>
+            <button class="btn btn-warning btn-sm editBtn">Edit</button>
+            <button class="btn btn-danger btn-sm deleteBtn">Delete</button>
+          </td>
+        `;
+
+        // Append the new row to the table body
+        bookTableBody.appendChild(newRow);
+
+        // Clear the input fields
+        bookForm.reset();
+      });
+
+      // Event listener for the clear button
+      clearBtn.addEventListener("click", function () {
+        bookForm.reset(); // Clear the input fields
+        bookTableBody.innerHTML = ""; // Clear the table
+      });
+
+      // Event delegation for edit and delete buttons
+      bookTableBody.addEventListener("click", function (event) {
+        if (event.target.classList.contains("deleteBtn")) {
+          // Remove the row from the table
+          const row = event.target.closest("tr");
+          row.remove();
+        }
+
+        if (event.target.classList.contains("editBtn")) {
+          // Placeholder for edit functionality
+          const row = event.target.closest("tr");
+          const cells = row.querySelectorAll("td");
+          document.getElementById("bookTitle").value = cells[0].textContent;
+          document.getElementById("author").value = cells[1].textContent;
+          document.getElementById("genre").value = cells[2].textContent;
+          document.getElementById("year").value = cells[3].textContent;
+
+          // Remove the row after editing
+          row.remove();
+        }
+      });
+    </script>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</html>

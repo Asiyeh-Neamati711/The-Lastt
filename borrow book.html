@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title><br>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+
+        /* General Styles */
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+        
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center;
+    text-decoration: underline
+    
+    
+        }
+
+        h2, h3, h4 {
+            font-weight: 600;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .text-center {
+            color: #495057;
+        }
+
+        /* Styling the book list */
+        .list-group-item {
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+            font-weight: 400;
+            color: #495057;
+        }
+
+        .list-group-item:hover {
+            background-color: #e9ecef;
+        }
+
+        .list-group-item.selected {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        /* Input Fields */
+        input[type="text"] {
+            border-radius: 6px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        /* Message styling */
+        #message {
+            font-size: 16px;
+            font-weight: 500;
+            color: #ff6b6b;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f8f9fa;
+            padding: 15px;
+            font-size: 14px;
+            color: #495057;
+        }
+    </style>
+</head>
+
+<body>
+        
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #758597;">
+        <a class="navbar-brand text-white" href="index.html">Library System</a>
+        <div class="notification-container">
+            <button class="notification-button">
+                <span class="icon">🔔</span>
+                <span class="badge">3</span>
+            </button>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    
+                    <a class="nav-link text-white" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="catalog.html">Catalog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="admin.html">Admin Panel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="register.html">Register</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="search.html">Search </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2 class="text-center">Library Management System</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Available Books</h3>
+                <ul id="book-list" class="list-group">
+                    <!-- List of Books will be generated here -->
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3>User Account</h3>
+                <input type="text" id="user-name" class="form-control" placeholder="Enter your name" />
+                <button id="borrow-books" class="btn btn-primary mt-2">Borrow Selected Books</button>
+                <button id="return-books" class="btn btn-danger mt-2">Return Selected Books</button>
+                <h4 class="mt-4">My Borrowed Books</h4>
+                <ul id="user-books" class="list-group">
+                    <!-- User borrowed books will be listed here -->
+                </ul>
+                <p id="message" class="mt-3"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS for the book borrowing system -->
+    <script>
+        const books = [
+            { id: 1, title: "In Praise of Folly", available: true },
+            { id: 2, title: "The Power Within", available: true },
+            { id: 3, title: "The Forty Rules Of Love", available: true },
+            { id: 4, title: "Harry Potter and the Sorcerer's Stone", available: true },
+            { id: 5, title: "Anna Karnina", available: true },
+            { id: 6, title: "The Midnight Library", available: true },
+            { id: 7, title: "Sophie's World", available: true },
+            { id: 8, title: "Rich Dad Poor Dad", available: true },
+            { id: 8, title: "The Silent Patient", available: true },
+        
+        ];
+
+        let borrowedBooks = [];
+        const borrowLimit = 7;
+
+        // Function to render books
+        function renderBooks() {
+            const bookList = document.getElementById("book-list");
+            bookList.innerHTML = "";
+            books.forEach(book => {
+                const listItem = document.createElement("li");
+                listItem.className = `list-group-item ${book.available ? '' : 'disabled'}`;
+                listItem.textContent = book.title;
+                listItem.onclick = () => {
+                    if (book.available) {
+                        listItem.classList.toggle("selected");
+                    }
+                };
+                bookList.appendChild(listItem);
+            });
+        }
+
+        // Function to borrow selected books
+        function borrowSelectedBooks() {
+            const selectedBooks = Array.from(document.querySelectorAll('.list-group-item.selected'));
+            if (selectedBooks.length > borrowLimit) {
+                displayMessage(`You can only borrow up to ${borrowLimit} books at a time.`);
+                return;
+            }
+
+            selectedBooks.forEach(selected => {
+                const bookTitle = selected.textContent;
+                const book = books.find(b => b.title === bookTitle);
+                if (book && book.available) {
+                    book.available = false;
+                    borrowedBooks.push(book);
+                }
+            });
+
+            renderBooks();
+            updateUserBooks();
+            displayMessage(`Successfully borrowed ${selectedBooks.length} book(s).`);
+        }
+
+        // Function to return selected books
+        function returnSelectedBooks() {
+            const userBooksList = document.getElementById("user-books");
+            const selectedUserBooks = Array.from(userBooksList.querySelectorAll('.list-group-item.selected'));
+            selectedUserBooks.forEach(selected => {
+                const bookTitle = selected.textContent;
+                const bookIndex = borrowedBooks.findIndex(b => b.title === bookTitle);
+                if (bookIndex >= 0) {
+                    borrowedBooks.splice(bookIndex, 1);
+                    const book = books.find(b => b.title === bookTitle);
+                    if (book) {
+                        book.available = true;
+                    }
+                }
+            });
+
+            renderBooks();
+            updateUserBooks();
+            displayMessage(`Returned ${selectedUserBooks.length} book(s).`);
+        }
+
+        // Function to update user borrowed books
+        function updateUserBooks() {
+            const userBooksList = document.getElementById("user-books");
+            userBooksList.innerHTML = "";
+            borrowedBooks.forEach(book => {
+                const listItem = document.createElement("li");
+                listItem.className = "list-group-item";
+                listItem.textContent = book.title;
+                listItem.onclick = () => {
+                    listItem.classList.toggle("selected");
+                };
+                userBooksList.appendChild(listItem);
+            });
+        }
+
+        // Function to display message to user
+        function displayMessage(message) {
+            const messageElement = document.getElementById("message");
+            messageElement.textContent = message;
+        }
+
+        // Event Listeners
+        document.getElementById("borrow-books").onclick = borrowSelectedBooks;
+        document.getElementById("return-books").onclick = returnSelectedBooks;
+
+        // Initial Rendering
+        renderBooks();
+    </script>
+
+    <footer class="text-center mt-5">
+        <p>&copy; 2024 Library Management System. All rights reserved.</p>
+    </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</html>
